@@ -11,7 +11,7 @@ phases:
   pre_build:
     commands:
       - aws s3 cp s3://code-build-dskobel-test/settings.xml .
-      - aws s3 cp s3://code-build-dskobel-test/vrc_core_ci_scripts . --recursive
+      - aws s3 cp s3://code-build-dskobel-test/vrc_core_ci_scripts ci --recursive
   build:
     commands:
       - ls
@@ -23,3 +23,4 @@ phases:
         if [ "master" = "${CODEBUILD_GIT_BRANCH}" ]; then
             echo "deploy"
         fi
+      - bash utils/get_environment_name.sh
