@@ -4,11 +4,15 @@ phases:
   install:
     runtime-versions:
       java: openjdk8
+      nodejs: 10
     commands:
       - curl -fsSL https://raw.githubusercontent.com/thii/aws-codebuild-extras/master/install >> extras.sh
       - . ./extras.sh
+      - cp s3://code-build-dskobel-test/vrc_core_ci_scripts .
   build:
     commands:
+      - ls
+      - ls ..
       - echo build
       - echo "${CODEBUILD_GIT_BRANCH}"
       - git rev-parse --show-toplevel
