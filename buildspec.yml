@@ -4,6 +4,15 @@ phases:
   install:
     runtime-versions:
       java: openjdk8
+    commands:
+      - curl -fsSL https://raw.githubusercontent.com/thii/aws-codebuild-extras/master/install >> extras.sh
+      - . ./extras.sh
   build:
     commands:
-        - echo build
+      - echo build
+      - echo "${CODEBUILD_GIT_BRANCH}"
+      - git rev-parse --show-toplevel
+      - |-
+        if [ "master" = "${CODEBUILD_GIT_BRANCH}" ]; then
+            echo "deploy"
+        fi
