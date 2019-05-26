@@ -23,4 +23,4 @@ phases:
         if [ "master" = "${CODEBUILD_GIT_BRANCH}" ]; then
             echo "deploy"
         fi
-      - bash utils/get_environment_name.sh
+      - bash ci/utils/get_environment_name.sh
