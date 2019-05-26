@@ -8,7 +8,10 @@ phases:
     commands:
       - curl -fsSL https://raw.githubusercontent.com/thii/aws-codebuild-extras/master/install >> extras.sh
       - . ./extras.sh
-      - cp s3://code-build-dskobel-test/vrc_core_ci_scripts .
+  pre_build:
+    commands:
+      - aws s3 cp s3://code-build-dskobel-test/settings.xml .
+      - aws s3 cp s3://code-build-dskobel-test/vrc_core_ci_scripts . --recursive
   build:
     commands:
       - ls
